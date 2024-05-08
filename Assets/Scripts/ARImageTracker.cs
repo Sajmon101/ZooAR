@@ -14,7 +14,7 @@ public class ARImageTracker : MonoBehaviour
     void Awake()
     {
         trackedImageManager.trackedImagesChanged += OnImageChanged;
-        Debug.Log("FFF");
+       
     }
 
     void Start()
@@ -36,10 +36,5 @@ public class ARImageTracker : MonoBehaviour
     void OnDestroy()
     {
         trackedImageManager.trackedImagesChanged -= OnImageChanged;
-    }
-
-    void Update()
-    {
-        Debug.Log("GGG");
     }
 }
