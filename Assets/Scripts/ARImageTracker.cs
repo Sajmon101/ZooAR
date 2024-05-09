@@ -10,7 +10,11 @@ public class ARImageTracker : MonoBehaviour
 
     public Dictionary<string, GameObject> prefabs = new Dictionary<string, GameObject>();
 
+
+    private GameObject currentInstance;
+
     [SerializeField] GameObject prefabElephant;
+    [SerializeField] GameObject prefabPanda;
     void Awake()
     {
         trackedImageManager.trackedImagesChanged += OnImageChanged;
@@ -20,18 +24,37 @@ public class ARImageTracker : MonoBehaviour
     void Start()
     {
         prefabs.Add("Elephant", prefabElephant);
+        prefabs.Add("Panda", prefabPanda);
     }
 
     void OnImageChanged(ARTrackedImagesChangedEventArgs eventArgs)
     {
+        // Usuniêcie poprzedniego obiektu, jeœli istnieje
+        if (currentInstance != null)
+        {
+            Destroy(currentInstance);
+        }
+
         foreach (var trackedImage in eventArgs.added)
         {
             if (prefabs.TryGetValue(trackedImage.referenceImage.name, out GameObject prefab))
             {
-                Instantiate(prefab, trackedImage.transform.position, Quaternion.identity);
+                // Instancjonowanie nowego obiektu i zapisanie referencji
+                currentInstance = Instantiate(prefab, trackedImage.transform.position, Quaternion.identity);
+            }
+        }
+
+        // Opcjonalnie: mo¿esz tak¿e aktualizowaæ po³o¿enie istniej¹cego obiektu z eventArgs.updated
+        foreach (var trackedImage in eventArgs.updated)
+        {
+            if (currentInstance != null && prefabs.TryGetValue(trackedImage.referenceImage.name, out GameObject prefab))
+            {
+                currentInstance.transform.position = trackedImage.transform.position;
+                currentInstance.transform.rotation = Quaternion.identity;
             }
         }
     }
+
 
     void OnDestroy()
     {

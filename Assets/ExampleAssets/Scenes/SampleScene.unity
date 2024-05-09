@@ -356,6 +356,8 @@ MonoBehaviour:
   trackedImageManager: {fileID: 388525036}
   prefabElephant: {fileID: 2947931240881967294, guid: e08d88ff511ae3c47acc5ed5baea248e,
     type: 3}
+  prefabPanda: {fileID: 8806647261794042055, guid: a5c92c3d11005ab4091125318070d410,
+    type: 3}
 --- !u!1 &223974226 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2173721579564172182, guid: a003bf067d06c4d4f8e5124b499775ad,
