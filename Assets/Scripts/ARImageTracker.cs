@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 
 public class ARImageTracker : MonoBehaviour
@@ -10,15 +11,17 @@ public class ARImageTracker : MonoBehaviour
 
     public Dictionary<string, GameObject> prefabs = new Dictionary<string, GameObject>();
 
-
-    private GameObject currentInstance;
+    private List<GameObject> allInstances = new List<GameObject>(); // Lista do przechowywania wszystkich instancji
+    [SerializeField] private Button removeButton; // Przycisk do usuwania modeli
 
     [SerializeField] GameObject prefabElephant;
     [SerializeField] GameObject prefabPanda;
+
     void Awake()
     {
         trackedImageManager.trackedImagesChanged += OnImageChanged;
-       
+        removeButton.onClick.AddListener(RemoveAllInstances); // Dodaj s³uchacza do przycisku
+
     }
 
     void Start()
@@ -27,37 +30,32 @@ public class ARImageTracker : MonoBehaviour
         prefabs.Add("Panda", prefabPanda);
     }
 
+
     void OnImageChanged(ARTrackedImagesChangedEventArgs eventArgs)
     {
-        // Usuniêcie poprzedniego obiektu, jeœli istnieje
-        if (currentInstance != null)
-        {
-            Destroy(currentInstance);
-        }
-
         foreach (var trackedImage in eventArgs.added)
         {
             if (prefabs.TryGetValue(trackedImage.referenceImage.name, out GameObject prefab))
             {
-                // Instancjonowanie nowego obiektu i zapisanie referencji
-                currentInstance = Instantiate(prefab, trackedImage.transform.position, Quaternion.identity);
-            }
-        }
-
-        // Opcjonalnie: mo¿esz tak¿e aktualizowaæ po³o¿enie istniej¹cego obiektu z eventArgs.updated
-        foreach (var trackedImage in eventArgs.updated)
-        {
-            if (currentInstance != null && prefabs.TryGetValue(trackedImage.referenceImage.name, out GameObject prefab))
-            {
-                currentInstance.transform.position = trackedImage.transform.position;
-                currentInstance.transform.rotation = Quaternion.identity;
+                var instance = Instantiate(prefab, trackedImage.transform.position, Quaternion.identity);
+                allInstances.Add(instance); // Dodaj now¹ instancjê do listy
             }
         }
     }
 
+    public void RemoveAllInstances()
+    {
+        foreach (var instance in allInstances)
+        {
+            if (instance != null)
+                Destroy(instance);
+        }
+        allInstances.Clear(); // Wyczyœæ listê po usuniêciu wszystkich instancji
+    }
 
     void OnDestroy()
     {
         trackedImageManager.trackedImagesChanged -= OnImageChanged;
+        removeButton.onClick.RemoveListener(RemoveAllInstances); // Usuñ s³uchacza
     }
 }
