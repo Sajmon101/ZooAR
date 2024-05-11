@@ -11,16 +11,15 @@ public class ARImageTracker : MonoBehaviour
 
     public Dictionary<string, GameObject> prefabs = new Dictionary<string, GameObject>();
 
-    private List<GameObject> allInstances = new List<GameObject>(); // Lista do przechowywania wszystkich instancji
-    [SerializeField] private Button removeButton; // Przycisk do usuwania modeli
-
+    private List<GameObject> allInstances = new List<GameObject>();
+    [SerializeField] private Button removeButton;
     [SerializeField] GameObject prefabElephant;
     [SerializeField] GameObject prefabPanda;
 
     void Awake()
     {
         trackedImageManager.trackedImagesChanged += OnImageChanged;
-        removeButton.onClick.AddListener(RemoveAllInstances); // Dodaj s³uchacza do przycisku
+        removeButton.onClick.AddListener(RemoveAllInstances);
 
     }
 
@@ -38,7 +37,7 @@ public class ARImageTracker : MonoBehaviour
             if (prefabs.TryGetValue(trackedImage.referenceImage.name, out GameObject prefab))
             {
                 var instance = Instantiate(prefab, trackedImage.transform.position, Quaternion.identity);
-                allInstances.Add(instance); // Dodaj now¹ instancjê do listy
+                allInstances.Add(instance);
             }
         }
     }
@@ -56,6 +55,6 @@ public class ARImageTracker : MonoBehaviour
     void OnDestroy()
     {
         trackedImageManager.trackedImagesChanged -= OnImageChanged;
-        removeButton.onClick.RemoveListener(RemoveAllInstances); // Usuñ s³uchacza
+        removeButton.onClick.RemoveListener(RemoveAllInstances);
     }
 }

@@ -7,6 +7,7 @@
     "com.unity.xr.magicleap": "6.2.2",
     "com.unity.xr.management": "4.0.1",
     "com.unity.xr.windowsmr": "4.4.1",
+    "com.unity.modules.audio": "1.0.0",
     "com.unity.modules.particlesystem": "1.0.0",
     "com.unity.modules.physics2d": "1.0.0",
     "com.unity.modules.unitywebrequest": "1.0.0",
