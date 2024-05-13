@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
-  m_Name: ReferenceImageLibrary
+  m_Name: Image Library
   m_EditorClassIdentifier: 
   m_GuidLow: 5749700900587669682
   m_GuidHigh: 632047986180270483
@@ -19,8 +19,8 @@ MonoBehaviour:
       m_GuidLow: 5129370574839678417
       m_GuidHigh: 10592328605622271664
     m_SerializedTextureGuid:
-      m_GuidLow: 7779042871323874215
-      m_GuidHigh: 14278121217230324552
+      m_GuidLow: 618132205673809056
+      m_GuidHigh: 14797891833657084456
     m_Size: {x: 0, y: 0}
     m_SpecifySize: 0
     m_Name: Elephant
@@ -29,9 +29,19 @@ MonoBehaviour:
       m_GuidLow: 4978205335368960649
       m_GuidHigh: 10428124071932666246
     m_SerializedTextureGuid:
-      m_GuidLow: 9418415007402338967
-      m_GuidHigh: 9808062418914406299
+      m_GuidLow: 9156955392477347062
+      m_GuidHigh: 5335266160337865976
     m_Size: {x: 0, y: 0}
     m_SpecifySize: 0
     m_Name: Panda
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5540214943334166097
+      m_GuidHigh: 9588353177017075897
+    m_SerializedTextureGuid:
+      m_GuidLow: 10301116033251358238
+      m_GuidHigh: 16241338103842518297
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Zebra
     m_Texture: {fileID: 0}

@@ -15,6 +15,7 @@ public class ARImageTracker : MonoBehaviour
     [SerializeField] private Button removeButton;
     [SerializeField] GameObject prefabElephant;
     [SerializeField] GameObject prefabPanda;
+    [SerializeField] GameObject prefabZebra;
 
     void Awake()
     {
@@ -27,6 +28,7 @@ public class ARImageTracker : MonoBehaviour
     {
         prefabs.Add("Elephant", prefabElephant);
         prefabs.Add("Panda", prefabPanda);
+        prefabs.Add("Zebra", prefabZebra);
     }
 
 

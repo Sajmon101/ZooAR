@@ -371,6 +371,8 @@ MonoBehaviour:
     type: 3}
   prefabPanda: {fileID: 8806647261794042055, guid: a5c92c3d11005ab4091125318070d410,
     type: 3}
+  prefabZebra: {fileID: 1531309383054520031, guid: 2db46134dd796594eb0942daebcfa9c9,
+    type: 3}
 --- !u!1 &223974226 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2173721579564172182, guid: a003bf067d06c4d4f8e5124b499775ad,
@@ -685,7 +687,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1478866515}
-  - component: {fileID: 1478866516}
   - component: {fileID: 1478866517}
   m_Layer: 0
   m_Name: Interaction Manager
@@ -708,19 +709,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1478866516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1478866514}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ade9b497a4d6ed459b70671dcf384b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debugText: {fileID: 40919615}
 --- !u!114 &1478866517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -734,9 +722,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugText: {fileID: 40919615}
-  m_RaycastManager: {fileID: 388525033}
-  spawnableObject: {fileID: 2947931240881967294, guid: e08d88ff511ae3c47acc5ed5baea248e,
-    type: 3}
 --- !u!114 &1740341070 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 449393675175410785, guid: bfcef7757fb5b1e499d11233affe4d1d,
