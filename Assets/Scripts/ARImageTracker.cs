@@ -11,22 +11,23 @@ public class ARImageTracker : MonoBehaviour
     private ARTrackedImageManager trackedImageManager;
 
     public Dictionary<string, GameObject> prefabs = new Dictionary<string, GameObject>();
-    private Dictionary<string, GameObject> trackedInstances = new Dictionary<string, GameObject>();
-
-    private List<GameObject> allInstances = new List<GameObject>();
+    private Dictionary<string, List<GameObject>> trackedInstances = new Dictionary<string, List<GameObject>>();
     private AudioSource confirmSound;
+    GameObject currentPrefab;
+    ARTrackedImage currentTrackImage;
     [SerializeField] private Button removeButton;
     [SerializeField] GameObject prefabElephant;
     [SerializeField] GameObject prefabPanda;
     [SerializeField] GameObject prefabZebra;
     [SerializeField] Text debugText;
+    [SerializeField] Text animalInfo;
 
     void Awake()
     {
         trackedImageManager.trackedImagesChanged += OnImageChanged;
+        DetectObject.OnARSurfaceHit += HandleSurfaceHit;
         removeButton.onClick.AddListener(RemoveAllInstances);
         confirmSound = GetComponent<AudioSource>();
-
     }
 
     void Start()
@@ -42,7 +43,7 @@ public class ARImageTracker : MonoBehaviour
         {
             if (!trackedInstances.ContainsKey(trackedImage.referenceImage.name))
             {
-                InstantiatePrefab(trackedImage);
+                SetPrefab(trackedImage);
             }
         }
 
@@ -51,28 +52,29 @@ public class ARImageTracker : MonoBehaviour
             if (trackedImage.trackingState == UnityEngine.XR.ARSubsystems.TrackingState.Tracking &&
                 !trackedInstances.ContainsKey(trackedImage.referenceImage.name))
             {
-                InstantiatePrefab(trackedImage);
+                SetPrefab(trackedImage);
             }
         }
 
         foreach (var trackedImage in eventArgs.removed)
         {
-            if (trackedInstances.TryGetValue(trackedImage.referenceImage.name, out GameObject instance))
+            if (trackedInstances.TryGetValue(trackedImage.referenceImage.name, out List<GameObject> instances))
             {
-                Destroy(instance);
+                foreach (var instance in instances)
+                {
+                    Destroy(instance);
+                }
                 trackedInstances.Remove(trackedImage.referenceImage.name);
             }
         }
     }
 
-    private void InstantiatePrefab(ARTrackedImage trackedImage)
+    private void SetPrefab(ARTrackedImage trackedImage)
     {
-        if (prefabs.TryGetValue(trackedImage.referenceImage.name, out GameObject prefab))
+        if (prefabs.TryGetValue(trackedImage.referenceImage.name, out currentPrefab))
         {
-            var instance = Instantiate(prefab, trackedImage.transform.position, Quaternion.identity);
-            trackedInstances[trackedImage.referenceImage.name] = instance;
-            debugText.text = prefab.name;
-
+            currentTrackImage = trackedImage;
+            animalInfo.text = trackedImage.referenceImage.name;
             if (!confirmSound.isPlaying)
             {
                 confirmSound.Play();
@@ -80,13 +82,38 @@ public class ARImageTracker : MonoBehaviour
         }
     }
 
+    private void DrawPrefab(Vector3 positionToDraw)
+    {
+        var instance = Instantiate(currentPrefab, positionToDraw, Quaternion.identity);
+
+        if (!trackedInstances.ContainsKey(currentTrackImage.referenceImage.name))
+        {
+            trackedInstances[currentTrackImage.referenceImage.name] = new List<GameObject>();
+        }
+
+        trackedInstances[currentTrackImage.referenceImage.name].Add(instance);
+        debugText.text = currentPrefab.name;
+    }
+
+    void HandleSurfaceHit(Vector3 hitPoint)
+    {
+        // Obs³u¿ trafienie w powierzchniê AR
+        debugText.text = "O tak";
+        // Dodaj tutaj kod, który ma siê wykonaæ po trafieniu w powierzchniê AR
+        DrawPrefab(hitPoint);
+    }
+
     public void RemoveAllInstances()
     {
-        foreach (var instance in trackedInstances.Values)
+        Debug.Log("RemoveAllInstances called");
+        foreach (var instanceList in trackedInstances.Values)
         {
-            if (instance != null)
+            foreach (var instance in instanceList)
             {
-                Destroy(instance);
+                if (instance != null)
+                {
+                    Destroy(instance);
+                }
             }
         }
         trackedInstances.Clear();
@@ -95,6 +122,7 @@ public class ARImageTracker : MonoBehaviour
     void OnDestroy()
     {
         trackedImageManager.trackedImagesChanged -= OnImageChanged;
+        DetectObject.OnARSurfaceHit -= HandleSurfaceHit;
         removeButton.onClick.RemoveListener(RemoveAllInstances);
     }
 }

@@ -41,6 +41,8 @@ public class DetectObject : MonoBehaviour
 {
     public Text debugText;
     Camera arCam;
+    public delegate void ARSurfaceHitHandler(Vector3 hitPoint);
+    public static event ARSurfaceHitHandler OnARSurfaceHit;
 
     void Start()
     {
@@ -58,7 +60,7 @@ public class DetectObject : MonoBehaviour
                 // SprawdŸ, czy trafiony obiekt to powierzchnia AR
                 if (hit.transform.GetComponent<ARPlane>() != null)
                 {
-                    debugText.text = "Trafiono w powierzchniê AR";
+                    OnARSurfaceHit?.Invoke(hit.point);
                 }
                 else
                 {
