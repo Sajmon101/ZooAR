@@ -1042,6 +1042,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2295850239340256360, guid: bfcef7757fb5b1e499d11233affe4d1d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2591589880665518630, guid: bfcef7757fb5b1e499d11233affe4d1d,
         type: 3}
       propertyPath: m_FontData.m_VerticalOverflow
@@ -1051,6 +1056,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FontData.m_HorizontalOverflow
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6705692011488562317, guid: bfcef7757fb5b1e499d11233affe4d1d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7122609529693080626, guid: bfcef7757fb5b1e499d11233affe4d1d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfcef7757fb5b1e499d11233affe4d1d, type: 3}
