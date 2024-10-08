@@ -14,7 +14,7 @@ Animal Encyclopedia AR is an interactive augmented reality (AR) mobile applicati
 - ARCore
 
 ## Screenshots
-<img src="Images/ZooAR.jpg" alt="Screenshot" width="500"/> <img src="Images/ZooAR2.jpg" alt="Screenshoot" width="500"/>
+<img src="Images/ZooAR.jpg" alt="Screenshot" width="300"/> <img src="Images/ZooAR_2.jpg" alt="Screenshoot" width="500"/>
 ![Gameplay GIF](Images/ZooAR.gif)
 
 ##License
