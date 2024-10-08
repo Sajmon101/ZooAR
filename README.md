@@ -17,5 +17,12 @@ Animal Encyclopedia AR is an interactive augmented reality (AR) mobile applicati
 <img src="Images/ZooAR.jpg" alt="Screenshot" width="300"/> <img src="Images/ZooAR_2.jpg" alt="Screenshoot" width="500"/>
 ![Gameplay GIF](Images/ZooAR.gif)
 
+## Assets
+Additional external resources:
+
+- **Panda 3D Model** – downloaded from [TurboSquid](https://www.turbosquid.com/3d-models/realistic-3d-panda-bear-with-fur-high-and-low-poly-model-2057894).
+- **Elephant 3D Model** – downloaded from [TurboSquid](https://www.turbosquid.com/3d-models/african-elephant-obj-free/1126601).
+- **Zebra 3D Model** – downloaded from [CadNav](https://www.cadnav.com/3d-models/model-48905.html).
+
 ## License
 The project is available under the MIT License.
