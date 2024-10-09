@@ -1,7 +1,7 @@
 # ZooAR
 
 ## Project description
-Animal Encyclopedia AR is an interactive augmented reality (AR) mobile application designed to bring animals to life for children. Using the app, kids can scan images from a specific animal encyclopedia, and watch as animals like elephants, pandas, and zebras appear in 3D. This app aims to make learning more engaging and enjoyable by merging the physical and digital worlds.
+Zoo AR is an interactive augmented reality (AR) mobile application designed to bring animals to life for children. Using the app, kids can scan images from a specific animal encyclopedia, and watch as animals like elephants, pandas, and zebras appear in 3D. This app aims to make learning more engaging and enjoyable by merging the physical and digital worlds.
 
 ## Key Features
 - Image Recognition: The app recognizes specific images of animals (elephant, panda, and zebra) from the encyclopedia. When an image is detected, the app displays the animal's name in the top-left corner.
