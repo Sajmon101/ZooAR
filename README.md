@@ -24,10 +24,10 @@ Animal Encyclopedia AR is an interactive augmented reality (AR) mobile applicati
     <td>
       <table>
         <tr>
-          <td><img src="Images/ZooAR.gif" alt="Gameplay GIF" width="250"/></td>
+          <td><img src="Images/ZooAR.gif" alt="Gameplay GIF" width="500"/></td>
         </tr>
         <tr>
-          <td><img src="Images/ZooAR_2.jpg" alt="Screenshot" width="250"/></td>
+          <td><img src="Images/ZooAR_2.jpg" alt="Screenshot" width="500"/></td>
         </tr>
       </table>
     </td>
