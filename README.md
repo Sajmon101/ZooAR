@@ -9,7 +9,7 @@ Zoo AR is an interactive augmented reality (AR) mobile application designed to b
 - **Interactive 3D Models**: Children can tap on the 3D animal models to hear the natural sounds that these animals make, providing an immersive learning experience.
 
 ## Tools
-- Unity 2020.3.0f1
+- Unity 2020.3.0f1 (build-in pipeline)
 - AR Foundation
 - ARCore
 
